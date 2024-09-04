@@ -31,7 +31,6 @@ module "ecs-cluster" {
   subnet_ids                  = local.application_subnet_ids
   ec2_key_pair_name           = var.ec2_key_pair_name
   ec2_instance_type           = var.ec2_instance_type
-  ec2_image_id                = var.ec2_image_id
   asg_max_instance_count      = var.asg_max_instance_count
   asg_min_instance_count      = var.asg_min_instance_count
   enable_container_insights   = var.enable_container_insights
