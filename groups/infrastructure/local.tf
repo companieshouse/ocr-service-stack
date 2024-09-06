@@ -11,6 +11,8 @@ locals {
   vpc_name                   = local.stack_secrets["vpc_name"]
   notify_topic_slack_endpoint = local.stack_secrets["notify_topic_slack_endpoint"]
 
+  ec2_ami_id = var.ec2_ami_id == "" ? data.aws_ami.ecs.id : var.ec2_ami_id
+
   parameter_store_secrets    = {
     "web-oauth2-cookie-secret" = local.stack_secrets["web-oauth2-cookie-secret"]
   }
