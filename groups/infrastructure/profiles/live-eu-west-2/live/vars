@@ -1,0 +1,9 @@
+environment = "live"
+aws_profile = "live-eu-west-2"
+enable_container_insights = true
+
+ec2_instance_type = "m7i.2xlarge"
+asg_max_instance_count     = 4
+asg_desired_instance_count = 2
+
+ec2_key_pair_name = "ch-aws-live"
