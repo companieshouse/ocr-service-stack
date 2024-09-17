@@ -60,12 +60,6 @@ variable "enable_asg_autoscaling" {
   description = "Whether to enable auto-scaling of the ASG by creating a capacity provider for the ECS cluster."
 }
 
-variable "ec2_ami_id" {
-  default     = ""
-  description = "The AMI id to use when launching instances in the ASG; when set, will be preferred over the result of an AMI lookup"
-  type        = string
-}
-
 variable "ec2_ami_name_regex" {
   default     = "^al2023-ami-ecs-hvm-2023.0.*-kernel-6.1-x86_64"
   description = "The regex pattern to use to lookup an AMI, when ec2_ami_id is empty"
