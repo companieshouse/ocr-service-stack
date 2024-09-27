@@ -25,6 +25,27 @@ variable "ec2_instance_type" {
   description = "The instance type for ec2 instances in the clusters."
 }
 
+variable "required_cpus" {
+  type        = number
+  description = "The required cpu resource for this service. 1024 here is 1 vCPU"
+  default     = 3840 # current cpu used by legacy ocr api service pipeline
+}
+variable "required_memory" {
+  type        = number
+  description = "The required memory for this service"
+  default     = 15872 # current memory used by legacy ocr api service pipeline
+}
+variable "eric_cpus" {
+  type = number
+  description = "The required cpu resource for eric. 1024 here is 1 vCPU"
+  default = 256
+}
+variable "eric_memory" {
+  type = number
+  description = "The required memory for eric"
+  default = 512
+}
+
 # Auto-scaling Group
 variable "asg_max_instance_count" {
   default     = 0
@@ -77,4 +98,9 @@ variable "enable_container_insights" {
   type        = bool
   description = "A boolean value indicating whether to enable Container Insights or not"
   default     = true
+}
+
+variable "eric_version" {
+  type        = string
+  description = "The version of the eric container to run."
 }
