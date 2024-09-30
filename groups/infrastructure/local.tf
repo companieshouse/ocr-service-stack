@@ -15,17 +15,4 @@ locals {
   parameter_store_secrets     = {
     "web-oauth2-cookie-secret" = local.stack_secrets["web-oauth2-cookie-secret"]
   }
-
-  global_secrets_arn_map = {
-    for sec in data.aws_ssm_parameter.global_secret :
-    trimprefix(sec.name, "/${local.global_prefix}/") => sec.arn
-  }
-
-    # get eric secrets from global secrets map
-  eric_secrets = [
-    { "name": "API_KEY", "valueFrom": local.global_secrets_arn_map.eric_api_key },
-    { "name": "AES256_KEY", "valueFrom": local.global_secrets_arn_map.eric_aes256_key }
-  ]
-
-  eric_environment_filename = "eric.env"
 }
