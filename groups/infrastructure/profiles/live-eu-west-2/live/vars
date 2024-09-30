@@ -7,6 +7,3 @@ asg_max_instance_count     = 4
 asg_desired_instance_count = 2
 
 ec2_key_pair_name = "ch-aws-live"
-
-required_cpus    = 7936
-required_memory  = 32256

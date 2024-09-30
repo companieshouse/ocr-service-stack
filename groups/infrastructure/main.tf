@@ -40,17 +40,6 @@ module "ecs-cluster" {
   scaleup_schedule            = var.asg_scaleup_schedule
   enable_asg_autoscaling      = var.enable_asg_autoscaling
   notify_topic_slack_endpoint = local.notify_topic_slack_endpoint
-  required_cpus               = var.required_cpus
-  required_memory             = var.required_memory
-
-    # eric options for eric running API module
-  use_eric_reverse_proxy    = true
-  eric_version              = var.eric_version
-  eric_cpus                 = var.eric_cpus
-  eric_memory               = var.eric_memory
-  eric_port                 = local.eric_port
-  eric_environment_filename = local.eric_environment_filename
-  eric_secrets              = local.eric_secrets
 }
 
 module "secrets" {
