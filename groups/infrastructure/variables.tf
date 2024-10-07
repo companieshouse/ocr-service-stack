@@ -19,25 +19,28 @@ variable "ec2_key_pair_name" {
   type        = string
   description = "The key pair for SSH access to ec2 instances in the clusters."
 }
+
 variable "ec2_instance_type" {
-  default     = "m7i.xlarge"
+  default     = "t3.large"
   type        = string
   description = "The instance type for ec2 instances in the clusters."
 }
 
 # Auto-scaling Group
 variable "asg_max_instance_count" {
-  default     = 0
+  default     = 2
   type        = number
   description = "The maximum allowed number of instances in the autoscaling group for the cluster."
 }
+
 variable "asg_min_instance_count" {
   default     = 0
   type        = number
   description = "The minimum allowed number of instances in the autoscaling group for the cluster."
 }
+
 variable "asg_desired_instance_count" {
-  default     = 0
+  default     = 1
   type        = number
   description = "The desired number of instances in the autoscaling group for the cluster. Must fall within the min/max instance count range."
 }
