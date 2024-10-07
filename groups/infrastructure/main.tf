@@ -1,13 +1,13 @@
 terraform {
-  required_version = "~> 1.3"
+  required_version = ">= 1.3, < 2.0"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.54.0"
+       version = ">= 5.0, < 6.0"
     }
     vault = {
       source  = "hashicorp/vault"
-      version = "~> 3.18.0"
+      version = ">= 4.0, < 5.0"
     }
   }
 }
@@ -22,6 +22,7 @@ terraform {
 
 module "ecs-cluster" {
   source = "git@github.com:companieshouse/terraform-modules//aws/ecs/ecs-cluster?ref=1.0.287"
+
 
   stack_name                  = local.stack_name
   name_prefix                 = local.name_prefix
