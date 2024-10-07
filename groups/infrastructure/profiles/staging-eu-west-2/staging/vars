@@ -4,7 +4,3 @@ enable_container_insights = true
 
 ec2_instance_type = "m7i.2xlarge"
 ec2_key_pair_name = "ch-aws-staging"
-
-# Scheduled scaling of tasks
-service_scaledown_schedule = "55 19 * * ? *"
-service_scaleup_schedule   = "5 6 * * ? *"
