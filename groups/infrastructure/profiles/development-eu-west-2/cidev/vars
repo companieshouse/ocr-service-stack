@@ -1,8 +1,8 @@
 environment = "cidev"
 aws_profile = "development-eu-west-2"
-enable_container_insights = true
 
 ec2_key_pair_name = "chs-cidev"
-
-asg_max_instance_count     = 2
-asg_desired_instance_count = 1
+cert_domain = "cidev.aws.chdev.org"
+domain_name = "aws.chdev.org"
+create_route53_aliases = true
+route53_aliases_ocr_api= ["ocr-api"]

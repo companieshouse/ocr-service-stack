@@ -11,4 +11,7 @@ locals {
   vpc_name                    = local.stack_secrets["vpc_name"]
   notify_topic_slack_endpoint = local.stack_secrets["notify_topic_slack_endpoint"]
 
+  application_cidrs       = [for subnet in data.aws_subnet.application : subnet.cidr_block]
+  ingress_prefix_list_ids = [data.aws_ec2_managed_prefix_list.admin.id, data.aws_ec2_managed_prefix_list.shared_services_management.id]
+
 }
