@@ -39,3 +39,28 @@ module "ecs-cluster" {
   enable_asg_autoscaling      = var.enable_asg_autoscaling
   notify_topic_slack_endpoint = local.notify_topic_slack_endpoint
 }
+
+module "ocr-api-alb" {
+  source = "git@github.com:companieshouse/terraform-modules//aws/application_load_balancer?ref=1.0.361"
+
+  environment             = var.environment
+  service                 = "ocr-api-internal"
+  ssl_certificate_arn     = data.aws_acm_certificate.cert.arn
+  subnet_ids              = split(",", local.application_subnet_ids)
+  vpc_id                  = data.aws_vpc.vpc.id
+  idle_timeout            = 1200
+  create_security_group   = true
+  ingress_cidrs           = local.application_cidrs
+  ingress_prefix_list_ids = local.ingress_prefix_list_ids
+  internal                = true
+  redirect_http_to_https  = true
+  route53_domain_name     = var.domain_name
+  route53_aliases         = var.route53_aliases_ocr_api
+  create_route53_aliases  = var.create_route53_aliases
+  service_configuration = {
+    listener_config = {
+      default_action_type = "fixed-response"
+      port                = 443
+    }
+  }
+}
