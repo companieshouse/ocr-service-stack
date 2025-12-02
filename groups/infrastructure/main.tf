@@ -44,7 +44,7 @@ module "ocr-api-alb" {
   source = "git@github.com:companieshouse/terraform-modules//aws/application_load_balancer?ref=1.0.361"
 
   environment             = var.environment
-  service                 = "ocr-api-internal"
+  service                 = "ocr-api"
   ssl_certificate_arn     = data.aws_acm_certificate.cert.arn
   subnet_ids              = split(",", local.application_subnet_ids)
   vpc_id                  = data.aws_vpc.vpc.id
