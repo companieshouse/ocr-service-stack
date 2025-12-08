@@ -14,6 +14,10 @@ locals {
   application_cidrs       = [for subnet in data.aws_subnet.application : subnet.cidr_block]
   ingress_prefix_list_ids = [data.aws_ec2_managed_prefix_list.admin.id, data.aws_ec2_managed_prefix_list.shared_services_management.id]
 
-  lb_ingress_cidrs        = concat(local.application_cidrs, var.lb_ingress_cidrs_allow )
+  account_ids                   = data.vault_generic_secret.account_ids.data
+  chips_utility_secrets         = jsondecode(data.vault_generic_secret.chips_utility_secrets.data_json)
+  heritage_data_subnet_pattern  = local.chips_utility_secrets["heritage_data_subnet_pattern"]
+  heritage_data_cidrs           = [for subnet in data.aws_subnet.heritage : subnet.cidr_block]
+  lb_ingress_cidrs              = concat(local.application_cidrs, local.heritage_data_cidrs )
 
 }

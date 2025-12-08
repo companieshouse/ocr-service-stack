@@ -16,6 +16,15 @@ provider "aws" {
   region  = var.aws_region
 }
 
+provider "aws" {
+  alias  = "heritage"
+  region = "eu-west-2"
+
+  assume_role {
+    role_arn = "arn:aws:iam::${local.account_ids[var.heritage_account]}:role/${data.aws_caller_identity.current.account_id}-terraform-lookup"
+  }
+}
+
 terraform {
   backend "s3" {}
 }

@@ -105,7 +105,8 @@ variable "cert_domain" {
   type        = string
 }
 
-variable "lb_ingress_cidrs_allow" {
-  description = "The CIDRs to allow in an environment."
-  type        = list(string)
+# Build time config
+variable "heritage_account" {
+  description = "The heritage account for data lookups"
+  type        = string
 }
