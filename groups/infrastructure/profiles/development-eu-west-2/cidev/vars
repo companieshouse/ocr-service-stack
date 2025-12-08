@@ -6,4 +6,5 @@ cert_domain = "cidev.aws.chdev.org"
 domain_name = "aws.chdev.org"
 create_route53_aliases = true
 route53_aliases_ocr_api= ["ocr-api-internal"]
+
 heritage_account = "heritage-development"
