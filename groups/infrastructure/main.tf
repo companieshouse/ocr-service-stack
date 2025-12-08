@@ -17,8 +17,11 @@ provider "aws" {
 }
 
 provider "aws" {
-  alias  = "eu-west-1"
+  alias  = "development"
   region = "eu-west-1"
+  assume_role {
+    role_arn = "arn:aws:iam::${local.account_ids[var.development_account]}:role/${data.aws_caller_identity.current.account_id}-terraform-lookup"
+  }
 }
 
 provider "aws" {

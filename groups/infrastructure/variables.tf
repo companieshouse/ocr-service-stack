@@ -110,3 +110,9 @@ variable "heritage_account" {
   description = "The heritage account for data lookups"
   type        = string
 }
+
+variable "development_account" {
+  description = "The development account for data lookups"
+  type        = string
+  default     = "development"
+}

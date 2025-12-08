@@ -36,7 +36,7 @@ data "aws_subnet" "heritage" {
 }
 
 data "aws_subnets" "management" {
-  provider = aws.eu-west-1
+  provider = aws.development
 
   filter {
     name   = "tag:Service"
