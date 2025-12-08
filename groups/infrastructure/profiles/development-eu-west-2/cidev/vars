@@ -6,3 +6,4 @@ cert_domain = "cidev.aws.chdev.org"
 domain_name = "aws.chdev.org"
 create_route53_aliases = true
 route53_aliases_ocr_api= ["ocr-api-internal"]
+lb_ingress_cidrs_allow = [ "10.75.120.0/21, 10.75.40.0/21, 10.172.20.0/22, 10.104.11.0/24, 10.172.116.0/22, 10.50.19.0/24, 10.172.16.0/24, 10.50.21.0/24, 10.104.12.0/24, 10.50.17.0/24, 10.50.17.0/24, 172.16.0.0/12, 10.104.10.0/24"]

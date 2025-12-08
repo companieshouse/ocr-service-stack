@@ -50,7 +50,7 @@ module "ocr-api-alb" {
   vpc_id                  = data.aws_vpc.vpc.id
   idle_timeout            = 1200
   create_security_group   = true
-  ingress_cidrs           = local.application_cidrs
+  ingress_cidrs           = local.lb_ingress_cidrs
   ingress_prefix_list_ids = local.ingress_prefix_list_ids
   internal                = true
   redirect_http_to_https  = true

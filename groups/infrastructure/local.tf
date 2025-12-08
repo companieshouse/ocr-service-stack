@@ -14,4 +14,6 @@ locals {
   application_cidrs       = [for subnet in data.aws_subnet.application : subnet.cidr_block]
   ingress_prefix_list_ids = [data.aws_ec2_managed_prefix_list.admin.id, data.aws_ec2_managed_prefix_list.shared_services_management.id]
 
+  lb_ingress_cidrs        = concat(local.application_cidrs, var.lb_ingress_cidrs_allow )
+
 }

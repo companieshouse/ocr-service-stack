@@ -4,3 +4,5 @@ enable_container_insights = true
 
 ec2_instance_type = "m7i.2xlarge"
 ec2_key_pair_name = "ch-aws-staging"
+
+lb_ingress_cidrs_allow = []
