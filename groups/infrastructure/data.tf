@@ -37,10 +37,6 @@ data "aws_subnet" "heritage" {
 
 data "aws_subnets" "management" {
   filter {
-    name   = "tag:Name"
-    values = [local.application_subnet_pattern]
-  }
-  filter {
     name   = "tag:Service"
     values = ["management"]
   }
