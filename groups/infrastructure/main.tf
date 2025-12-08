@@ -17,6 +17,11 @@ provider "aws" {
 }
 
 provider "aws" {
+  alias  = "eu-west-1"
+  region = "eu-west-1"
+}
+
+provider "aws" {
   alias  = "heritage"
   region = "eu-west-2"
 

@@ -36,10 +36,17 @@ data "aws_subnet" "heritage" {
 }
 
 data "aws_subnets" "management" {
+  provider = aws.eu-west-1
+
   filter {
     name   = "tag:Service"
     values = ["management"]
   }
+  filter {
+    name   = "tag:NetworkType"
+    values = ["private"]
+  }
+
 }
 
 data "aws_subnet" "management" {
