@@ -104,3 +104,15 @@ variable "cert_domain" {
   description = "The certificate domain to use."
   type        = string
 }
+
+# Build time config
+variable "heritage_account" {
+  description = "The heritage account for data lookups"
+  type        = string
+}
+
+variable "development_account" {
+  description = "The development account for data lookups"
+  type        = string
+  default     = "development"
+}

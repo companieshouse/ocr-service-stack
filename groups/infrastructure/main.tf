@@ -16,6 +16,23 @@ provider "aws" {
   region  = var.aws_region
 }
 
+provider "aws" {
+  alias  = "development"
+  region = "eu-west-1"
+  assume_role {
+    role_arn = "arn:aws:iam::${local.account_ids[var.development_account]}:role/${data.aws_caller_identity.current.account_id}-terraform-lookup"
+  }
+}
+
+provider "aws" {
+  alias  = "heritage"
+  region = "eu-west-2"
+
+  assume_role {
+    role_arn = "arn:aws:iam::${local.account_ids[var.heritage_account]}:role/${data.aws_caller_identity.current.account_id}-terraform-lookup"
+  }
+}
+
 terraform {
   backend "s3" {}
 }
@@ -50,7 +67,7 @@ module "ocr-api-alb" {
   vpc_id                  = data.aws_vpc.vpc.id
   idle_timeout            = 1200
   create_security_group   = true
-  ingress_cidrs           = local.application_cidrs
+  ingress_cidrs           = local.lb_ingress_cidrs
   ingress_prefix_list_ids = local.ingress_prefix_list_ids
   internal                = true
   redirect_http_to_https  = true
