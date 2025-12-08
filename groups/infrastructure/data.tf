@@ -50,6 +50,7 @@ data "aws_subnets" "management" {
 }
 
 data "aws_subnet" "management" {
+  provider = aws.development
   for_each = toset(data.aws_subnets.management.ids)
   id       = each.value
 }
