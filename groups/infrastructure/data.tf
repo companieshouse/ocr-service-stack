@@ -4,10 +4,6 @@ data "vault_generic_secret" "secrets" {
   path = "applications/${var.aws_profile}/${var.environment}/${local.stack_fullname}"
 }
 
-data "vault_generic_secret" "chips_utility_secrets" {
-  path = "applications/${var.aws_profile}/${var.environment}/chips-utility-stack"
-}
-
 data "vault_generic_secret" "account_ids" {
   path = "aws-accounts/account-ids"
 }
@@ -36,6 +32,22 @@ data "aws_subnets" "heritage" {
 data "aws_subnet" "heritage" {
   for_each = toset(data.aws_subnets.heritage.ids)
   provider = aws.heritage
+  id       = each.value
+}
+
+data "aws_subnets" "management" {
+  filter {
+    name   = "tag:Name"
+    values = [local.application_subnet_pattern]
+  }
+  filter {
+    name   = "tag:Service"
+    values = ["management"]
+  }
+}
+
+data "aws_subnet" "management" {
+  for_each = toset(data.aws_subnets.management.ids)
   id       = each.value
 }
 
