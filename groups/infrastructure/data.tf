@@ -25,7 +25,7 @@ data "aws_subnets" "heritage" {
 
   filter {
     name   = "tag:Name"
-    values = [local.heritage_data_subnet_pattern]
+    values = [local.heritage_application_subnet_pattern]
   }
 }
 
