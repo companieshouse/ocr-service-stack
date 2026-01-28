@@ -4,6 +4,7 @@ enable_container_insights = true
 
 ec2_instance_type = "m7i.2xlarge"
 ec2_key_pair_name = "ch-aws-live"
+cert_domain = "*.companieshouse.gov.uk"
 
 asg_desired_instance_count = 2
 asg_max_instance_count = 4
